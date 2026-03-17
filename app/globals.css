@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-dark-900 text-white antialiased;
+    background-color: #0a0a0a;
+  }
+
+  ::selection {
+    @apply bg-white/20 text-white;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-6xl mx-auto px-6 lg:px-8;
+  }
+}
