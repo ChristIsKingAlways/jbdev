@@ -1,5 +1,9 @@
 'use client'
 
+/**
+ * IntersectionObserver wrapper: returns [ref, visible] for scroll-driven UI (e.g. reveals).
+ */
+
 import { useEffect, useRef, useState } from 'react'
 
 /**

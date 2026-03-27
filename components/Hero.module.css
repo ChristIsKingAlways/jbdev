@@ -1,4 +1,9 @@
-.section {
+/**
+ * Block: hero — full-viewport landing; headline, lede, CTAs.
+ * Modifier on copy panel: --animate (entrance when in view; siblings all targeted).
+ */
+
+.hero {
   position: relative;
   min-block-size: 100dvh;
   display: flex;
@@ -7,18 +12,18 @@
   padding-block: var(--space-section);
 }
 
-.inner {
+.hero__inner {
   width: var(--container);
   margin-inline: auto;
   position: relative;
   z-index: 1;
 }
 
-.copy {
+.hero__copy {
   max-inline-size: 48rem;
 }
 
-.headline {
+.hero__headline {
   font-size: clamp(2.25rem, 5vw + 1rem, 4.25rem);
   font-weight: 500;
   line-height: 1.08;
@@ -26,66 +31,69 @@
   margin-block-end: var(--space-xl);
 }
 
-.line {
+.hero__headline-line {
   display: block;
   color: var(--text);
 }
 
-.lineMuted {
+/* Brighter than global --text-muted so the second line stays readable on glass */
+.hero__headline-line--muted {
   display: block;
-  color: var(--text-muted);
+  color: color-mix(in srgb, var(--text) 78%, var(--text-muted));
 }
 
+/**
+ * Entrance motion lives on hero__copy--animate so headline, lede, and actions
+ * (siblings under the glass panel) are all targeted. Motion uses transform only
+ * so copy never relies on opacity:0 (avoids stuck-invisible if animation fails).
+ */
 @media (prefers-reduced-motion: no-preference) {
-  .animate .headlineLine {
-    opacity: 0;
-    animation: hero-line 0.85s var(--ease-out-expo) forwards;
+  .hero__copy--animate .hero__headline-line {
+    animation: hero-line-in 0.85s var(--ease-out-expo) forwards;
   }
 
-  .animate .headlineLine:nth-of-type(1) {
+  .hero__copy--animate .hero__headline-line:nth-of-type(1) {
     animation-delay: 0.08s;
   }
 
-  .animate .headlineLine:nth-of-type(2) {
+  .hero__copy--animate .hero__headline-line:nth-of-type(2) {
     animation-delay: 0.2s;
   }
 
-  .animate .lede {
-    opacity: 0;
-    animation: fade-up 0.8s var(--ease-out-expo) 0.32s forwards;
+  .hero__copy--animate .hero__lede {
+    animation: hero-fade-up-in 0.8s var(--ease-out-expo) 0.32s forwards;
   }
 
-  .animate .actions {
-    opacity: 0;
-    animation: fade-up 0.8s var(--ease-out-expo) 0.48s forwards;
+  .hero__copy--animate .hero__actions {
+    animation: hero-fade-up-in 0.8s var(--ease-out-expo) 0.48s forwards;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate .headlineLine,
-  .animate .lede,
-  .animate .actions {
-    opacity: 1;
+  .hero__copy--animate .hero__headline-line,
+  .hero__copy--animate .hero__lede,
+  .hero__copy--animate .hero__actions {
+    animation: none;
   }
 }
 
-.lede {
+.hero__lede {
   font-size: clamp(1.05rem, 1vw + 0.9rem, 1.25rem);
-  color: var(--text-muted);
+  color: color-mix(in srgb, var(--text) 70%, var(--text-muted));
   max-inline-size: 36rem;
   margin-block-end: var(--space-2xl);
   font-weight: 300;
   line-height: 1.65;
 }
 
-.actions {
+.hero__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-lg);
 }
 
-.primary {
+.hero__button--primary {
   padding: 1rem 2rem;
   font-size: 0.875rem;
   font-weight: 600;
@@ -99,16 +107,16 @@
     background-color 0.25s var(--ease-out-expo);
 }
 
-.primary:hover {
+.hero__button--primary:hover {
   background: color-mix(in srgb, var(--text) 92%, var(--accent));
   transform: translateY(-1px);
 }
 
-.primary:active {
+.hero__button--primary:active {
   transform: translateY(0);
 }
 
-.secondary {
+.hero__button--secondary {
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text);
@@ -128,8 +136,8 @@
     transform 0.25s var(--ease-out-expo);
 }
 
-.secondary:hover,
-.secondary:focus-visible {
+.hero__button--secondary:hover,
+.hero__button--secondary:focus-visible {
   color: var(--text);
   background: color-mix(in srgb, var(--bg-deep) 52%, transparent);
   border-color: var(--glass-stroke-bright);
@@ -137,7 +145,7 @@
 }
 
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .secondary {
+  .hero__button--secondary {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: color-mix(in srgb, var(--bg-deep) 88%, white);
@@ -145,9 +153,27 @@
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .secondary {
+  .hero__button--secondary {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: color-mix(in srgb, var(--bg-deep) 86%, white);
+  }
+}
+
+@keyframes hero-line-in {
+  from {
+    transform: translateY(1.25rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade-up-in {
+  from {
+    transform: translateY(1.25rem);
+  }
+  to {
+    transform: translateY(0);
   }
 }

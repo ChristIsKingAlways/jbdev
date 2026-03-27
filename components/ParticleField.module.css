@@ -1,4 +1,8 @@
-.canvas {
+/**
+ * Block: particle-field — full-screen canvas layer behind content.
+ */
+
+.particle-field__canvas {
   position: fixed;
   inset: 0;
   z-index: 0;

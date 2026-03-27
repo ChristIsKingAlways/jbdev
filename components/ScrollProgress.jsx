@@ -1,5 +1,10 @@
 'use client'
 
+/**
+ * Reads document scroll as 0–1 via useSyncExternalStore; renders a thin gradient bar.
+ * BEM block: scroll-progress (see ScrollProgress.module.css).
+ */
+
 import { useScrollProgress } from '@/hooks/useScrollProgress'
 import styles from './ScrollProgress.module.css'
 
@@ -8,7 +13,7 @@ export default function ScrollProgress() {
 
   return (
     <div
-      className={styles.bar}
+      className={styles['scroll-progress__bar']}
       style={{ transform: `scaleX(${progress})` }}
       aria-hidden
     />

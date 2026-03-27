@@ -1,5 +1,10 @@
 'use client'
 
+/**
+ * Site navigation: fixed bar, in-page anchor scroll, glass states.
+ * BEM block: navigation (see Navigation.module.css).
+ */
+
 import { useEffect, useState } from 'react'
 import styles from './Navigation.module.css'
 
@@ -30,12 +35,12 @@ export default function Navigation() {
 
   return (
     <header
-      className={`${styles.header} ${scrolled ? styles.headerScrolled : styles.headerTop}`}
+      className={`${styles.navigation} ${scrolled ? styles['navigation--scrolled'] : styles['navigation--expanded']}`}
     >
-      <nav className={styles.inner} aria-label="Primary">
+      <nav className={styles.navigation__inner} aria-label="Primary">
         <a
           href="#home"
-          className={styles.brand}
+          className={styles.navigation__brand}
           onClick={(e) => {
             e.preventDefault()
             scrollToSelector('#home')
@@ -44,12 +49,12 @@ export default function Navigation() {
           Jordan Benson
         </a>
 
-        <ul className={styles.list}>
+        <ul className={styles.navigation__list}>
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className={styles.link}
+                className={styles.navigation__link}
                 onClick={(e) => {
                   e.preventDefault()
                   scrollToSelector(link.href)
@@ -63,7 +68,7 @@ export default function Navigation() {
 
         <button
           type="button"
-          className={styles.mobileCta}
+          className={styles['navigation__cta-mobile']}
           onClick={() => scrollToSelector('#contact')}
         >
           Contact

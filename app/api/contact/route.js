@@ -1,3 +1,7 @@
+/**
+ * Contact form API: validates JSON body; plug in email provider (Resend, SendGrid, etc.).
+ */
+
 import { NextResponse } from 'next/server'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/

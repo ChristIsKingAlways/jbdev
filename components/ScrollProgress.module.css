@@ -1,4 +1,8 @@
-.bar {
+/**
+ * Block: scroll-progress — fixed top bar scaled by scroll depth.
+ */
+
+.scroll-progress__bar {
   position: fixed;
   inset-block-start: 0;
   inset-inline: 0;

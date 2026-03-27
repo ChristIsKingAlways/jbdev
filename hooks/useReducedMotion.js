@@ -1,5 +1,9 @@
 'use client'
 
+/**
+ * Subscribes to prefers-reduced-motion for canvas and animation fallbacks.
+ */
+
 import { useSyncExternalStore } from 'react'
 
 function subscribe(callback) {

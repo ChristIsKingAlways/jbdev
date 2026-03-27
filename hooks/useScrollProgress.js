@@ -1,5 +1,9 @@
 'use client'
 
+/**
+ * Document scroll position as 0–1; safe with React concurrent rendering.
+ */
+
 import { useSyncExternalStore } from 'react'
 
 function subscribe(callback) {

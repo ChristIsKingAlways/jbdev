@@ -1,5 +1,10 @@
 'use client'
 
+/**
+ * Hero section: primary message and CTAs; copy panel uses global .glass--hero.
+ * BEM block: hero (see Hero.module.css).
+ */
+
 import { useInView } from '@/hooks/useInView'
 import styles from './Hero.module.css'
 
@@ -13,27 +18,41 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className={styles.section}
+      className={styles.hero}
       ref={ref}
       aria-labelledby="hero-heading"
     >
-      <div className={styles.inner}>
-        <div className={`${styles.copy} glass-surface glass-surface--hero`}>
-          <h1 id="hero-heading" className={`${styles.headline} ${visible ? styles.animate : ''}`}>
-            <span className={`${styles.line} ${styles.headlineLine}`}>Crafting digital</span>
-            <span className={`${styles.lineMuted} ${styles.headlineLine}`}>experiences that matter</span>
+      <div className={styles.hero__inner}>
+        <div
+          className={`${styles.hero__copy} glass glass--hero ${visible ? styles['hero__copy--animate'] : ''}`}
+        >
+          <h1 id="hero-heading" className={styles.hero__headline}>
+            <span className={styles['hero__headline-line']}>Crafting digital</span>
+            <span
+              className={`${styles['hero__headline-line']} ${styles['hero__headline-line--muted']}`}
+            >
+              experiences that matter
+            </span>
           </h1>
 
-          <p className={styles.lede}>
+          <p className={styles.hero__lede}>
             Developer and entrepreneur focused on building thoughtful, scalable solutions for the modern
             web.
           </p>
 
-          <div className={styles.actions}>
-            <button type="button" className={styles.primary} onClick={() => scrollToSection('#projects')}>
+          <div className={styles.hero__actions}>
+            <button
+              type="button"
+              className={styles['hero__button--primary']}
+              onClick={() => scrollToSection('#projects')}
+            >
               View Work
             </button>
-            <button type="button" className={styles.secondary} onClick={() => scrollToSection('#contact')}>
+            <button
+              type="button"
+              className={styles['hero__button--secondary']}
+              onClick={() => scrollToSection('#contact')}
+            >
               Get in touch →
             </button>
           </div>

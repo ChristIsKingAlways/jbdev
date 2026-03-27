@@ -1,5 +1,10 @@
 'use client'
 
+/**
+ * Contact section: mailto + POST /api/contact form with client validation.
+ * BEM block: contact (see Contact.module.css). Form shell uses global .glass--form.
+ */
+
 import { useId, useState } from 'react'
 import { useInView } from '@/hooks/useInView'
 import styles from './Contact.module.css'
@@ -61,37 +66,39 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className={styles.section}
+      className={styles.contact}
       aria-labelledby="contact-heading"
       ref={ref}
     >
-      <div className={styles.inner}>
-        <div className={styles.copy}>
-          <p className={styles.eyebrow}>Contact</p>
-          <h2 id="contact-heading" className={styles.title}>
+      <div className={styles.contact__inner}>
+        <div className={styles.contact__copy}>
+          <p className={styles.contact__eyebrow}>Contact</p>
+          <h2 id="contact-heading" className={styles.contact__title}>
             Let&apos;s work together
           </h2>
-          <p className={styles.sub}>Have a project in mind? I&apos;d love to hear about it.</p>
+          <p className={styles.contact__sub}>Have a project in mind? I&apos;d love to hear about it.</p>
 
-          <a href="mailto:Jordan@duodynamicsit.com" className={styles.mail}>
+          <a href="mailto:Jordan@duodynamicsit.com" className={styles.contact__mail}>
             Jordan@duodynamicsit.com
           </a>
 
-          <div className={`${styles.reveal} ${visible ? styles.revealVisible : ''}`}>
+          <div
+            className={`${styles.contact__reveal} ${visible ? styles['contact__reveal--visible'] : ''}`}
+          >
             <form
               id={formId}
-              className={`${styles.form} glass-surface glass-surface--form`}
+              className={`${styles.contact__form} glass glass--form`}
               onSubmit={handleSubmit}
               noValidate
               aria-describedby={status ? `${formId}-status` : undefined}
             >
-              <div className={styles.field}>
-                <label className={styles.label} htmlFor={`${formId}-name`}>
+              <div className={styles.contact__field}>
+                <label className={styles.contact__label} htmlFor={`${formId}-name`}>
                   Name
                 </label>
                 <input
                   id={`${formId}-name`}
-                  className={styles.input}
+                  className={styles.contact__input}
                   name="name"
                   type="text"
                   autoComplete="name"
@@ -99,19 +106,19 @@ export default function Contact() {
                   aria-describedby={fieldErrors.name ? `${formId}-name-err` : undefined}
                 />
                 {fieldErrors.name ? (
-                  <span id={`${formId}-name-err`} className={styles.error} role="alert">
+                  <span id={`${formId}-name-err`} className={styles.contact__error} role="alert">
                     {fieldErrors.name}
                   </span>
                 ) : null}
               </div>
 
-              <div className={styles.field}>
-                <label className={styles.label} htmlFor={`${formId}-email`}>
+              <div className={styles.contact__field}>
+                <label className={styles.contact__label} htmlFor={`${formId}-email`}>
                   Email
                 </label>
                 <input
                   id={`${formId}-email`}
-                  className={styles.input}
+                  className={styles.contact__input}
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -120,37 +127,37 @@ export default function Contact() {
                   aria-describedby={fieldErrors.email ? `${formId}-email-err` : undefined}
                 />
                 {fieldErrors.email ? (
-                  <span id={`${formId}-email-err`} className={styles.error} role="alert">
+                  <span id={`${formId}-email-err`} className={styles.contact__error} role="alert">
                     {fieldErrors.email}
                   </span>
                 ) : null}
               </div>
 
-              <div className={styles.field}>
-                <label className={styles.label} htmlFor={`${formId}-message`}>
+              <div className={styles.contact__field}>
+                <label className={styles.contact__label} htmlFor={`${formId}-message`}>
                   Message
                 </label>
                 <textarea
                   id={`${formId}-message`}
-                  className={styles.textarea}
+                  className={styles.contact__textarea}
                   name="message"
                   rows={5}
                   aria-invalid={fieldErrors.message ? 'true' : undefined}
                   aria-describedby={fieldErrors.message ? `${formId}-message-err` : undefined}
                 />
                 {fieldErrors.message ? (
-                  <span id={`${formId}-message-err`} className={styles.error} role="alert">
+                  <span id={`${formId}-message-err`} className={styles.contact__error} role="alert">
                     {fieldErrors.message}
                   </span>
                 ) : null}
               </div>
 
-              <p className={styles.hint}>Submissions are validated client- and server-side.</p>
+              <p className={styles.contact__hint}>Submissions are validated client- and server-side.</p>
 
               {status ? (
                 <p
                   id={`${formId}-status`}
-                  className={`${styles.status} ${status.type === 'success' ? styles.statusSuccess : styles.statusError}`}
+                  className={`${styles.contact__status} ${status.type === 'success' ? styles['contact__status--success'] : styles['contact__status--error']}`}
                   role="status"
                   aria-live="polite"
                 >
@@ -158,7 +165,7 @@ export default function Contact() {
                 </p>
               ) : null}
 
-              <button type="submit" className={styles.submit} disabled={pending}>
+              <button type="submit" className={styles.contact__submit} disabled={pending}>
                 {pending ? 'Sending…' : 'Send message'}
               </button>
             </form>

@@ -1,3 +1,7 @@
+/**
+ * Root layout: Inter via next/font, global CSS, site metadata.
+ */
+
 import { Inter } from 'next/font/google'
 import './globals.css'
 

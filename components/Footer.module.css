@@ -1,3 +1,7 @@
+/**
+ * Block: footer — copyright and social links in a glass pill.
+ */
+
 .footer {
   padding-block: var(--space-2xl);
   display: flex;
@@ -5,7 +9,7 @@
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
-.inner {
+.footer__inner {
   width: fit-content;
   max-width: min(var(--container), 100%);
   margin-inline: auto;
@@ -17,30 +21,30 @@
 }
 
 @media (min-width: 48rem) {
-  .inner {
+  .footer__inner {
     flex-direction: row;
   }
 }
 
-.copy {
+.footer__copy {
   font-size: 0.875rem;
   color: var(--text-faint);
 }
 
-.links {
+.footer__nav {
   display: flex;
   align-items: center;
   gap: var(--space-lg);
 }
 
-.link {
+.footer__link {
   font-size: 0.875rem;
   color: var(--text-faint);
   text-decoration: none;
   transition: color 0.25s var(--ease-out-expo);
 }
 
-.link:hover,
-.link:focus-visible {
+.footer__link:hover,
+.footer__link:focus-visible {
   color: var(--text-muted);
 }

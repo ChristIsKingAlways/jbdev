@@ -1,13 +1,15 @@
 # Portfolio Website
 
-A one-page portfolio built with **semantic HTML**, **modern CSS** (layers, custom properties, `color-mix`, container queries, logical properties), **JavaScript**, and **React** (Next.js App Router). Styling is hand-authored with **CSS Modules**—no Tailwind or animation libraries.
+A one-page portfolio built with **semantic HTML**, **modern CSS** (layers, custom properties, `color-mix`, logical properties), **JavaScript**, and **React** (Next.js App Router). Styling uses **CSS Modules** with **BEM-style** class names and shared **glass** utilities—no Tailwind or animation libraries.
+
+**Maintainer notes:** see [`docs/DEVELOPER-NOTES.md`](docs/DEVELOPER-NOTES.md) for BEM vocabulary, file map, and feature documentation.
 
 ## Highlights
 
 - **HTML**: Landmarks, skip link, labeled sections, accessible forms with `aria-*` and live regions
-- **CSS**: Design tokens, cascade layers, fluid type (`clamp`), reduced-motion preferences, responsive grid with `@container` plus fallbacks
+- **CSS**: Design tokens, cascade layers, fluid type (`clamp`), reduced-motion / reduced-transparency handling, responsive project grid
 - **JavaScript**: `IntersectionObserver`, `requestAnimationFrame` canvas field, `FormData` validation, `fetch` to API route
-- **React**: Client components where needed, `memo` on project cards, `useSyncExternalStore` for scroll and media queries, class `ErrorBoundary`, `useId` for form wiring
+- **React**: Client components where needed, `memo` on project cards, `useSyncExternalStore` for scroll and media queries, `ErrorBoundary`, `useId` for form wiring
 
 ## Tech stack
 

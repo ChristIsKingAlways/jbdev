@@ -1,3 +1,8 @@
+/**
+ * Home page composition: global chrome (skip, progress, inspector, canvas, nav)
+ * then main landmark with section components inside ErrorBoundary.
+ */
+
 import SkipLink from '@/components/SkipLink'
 import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'

@@ -1,10 +1,18 @@
 'use client'
 
+/**
+ * After HOVER_MS on one element, shows truncated outerHTML in a glass tooltip.
+ * Opt out: data-no-markup-inspector on an element. Root carries data-markup-inspector.
+ * BEM block: hover-code-tooltip (see HoverCodeTooltip.module.css).
+ */
+
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import styles from './HoverCodeTooltip.module.css'
 
 const HOVER_MS = 1500
 const MAX_CHARS = 900
+const ATTR_ROOT = 'data-markup-inspector'
+const ATTR_IGNORE = 'data-no-markup-inspector'
 
 function isExcluded(el) {
   if (!el || !(el instanceof Element)) return true
@@ -12,8 +20,8 @@ function isExcluded(el) {
   if (tag === 'HTML' || tag === 'BODY' || tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') {
     return true
   }
-  if (el.getAttribute('data-no-hover-code') === 'true') return true
-  if (el.closest('[data-hover-code-tooltip]')) return true
+  if (el.getAttribute(ATTR_IGNORE) === 'true') return true
+  if (el.closest(`[${ATTR_ROOT}]`)) return true
   return false
 }
 
@@ -138,13 +146,13 @@ export default function HoverCodeTooltip() {
   return (
     <div
       ref={rootRef}
-      data-hover-code-tooltip=""
-      className={`glass-surface ${styles.root}`}
+      {...{ [ATTR_ROOT]: '' }}
+      className={`glass ${styles['hover-code-tooltip']}`}
       style={{ left: pos.x, top: pos.y }}
       aria-hidden="true"
     >
-      <div className={styles.label}>Markup</div>
-      <pre className={styles.pre}>
+      <div className={styles['hover-code-tooltip__label']}>Markup</div>
+      <pre className={styles['hover-code-tooltip__code']}>
         <code>{panel}</code>
       </pre>
     </div>
