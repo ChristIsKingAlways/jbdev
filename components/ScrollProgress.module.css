@@ -1,0 +1,15 @@
+.bar {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: 2px;
+  z-index: 100;
+  transform-origin: inline-start;
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent-hot),
+    var(--accent-copper)
+  );
+  pointer-events: none;
+}

@@ -1,0 +1,142 @@
+.section {
+  padding-block: var(--space-section);
+}
+
+.inner {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.header {
+  margin-block-end: clamp(3rem, 8vw, 5rem);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  margin-block-end: var(--space-md);
+}
+
+.title {
+  font-size: clamp(1.75rem, 2vw + 1rem, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.grid {
+  container-type: inline-size;
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+  grid-template-columns: 1fr;
+}
+
+@container (min-width: 36rem) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container (min-width: 56rem) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Fallback when @container unsupported: viewport breakpoints */
+@supports not (container-type: inline-size) {
+  @media (min-width: 48rem) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-sm);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  margin-block-end: var(--space-lg);
+  background: var(--surface);
+}
+
+.thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--bg-deep) 22%, transparent);
+  pointer-events: none;
+}
+
+.image {
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.75s var(--ease-out-expo);
+}
+
+.card:hover .image,
+.card:focus-visible .image {
+  transform: scale(1.05);
+}
+
+.meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-block-end: var(--space-xs);
+}
+
+.category {
+  font-size: 0.875rem;
+  color: var(--text-faint);
+}
+
+.arrow {
+  color: var(--text-faint);
+  transition: color 0.25s var(--ease-out-expo);
+  flex-shrink: 0;
+}
+
+.card:hover .arrow,
+.card:focus-visible .arrow {
+  color: var(--text-muted);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo);
+}
+
+.revealVisible {
+  opacity: 1;
+  transform: translateY(0);
+}

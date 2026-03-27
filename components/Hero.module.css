@@ -1,0 +1,126 @@
+.section {
+  position: relative;
+  min-block-size: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-section);
+}
+
+.inner {
+  width: var(--container);
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.copy {
+  max-inline-size: 48rem;
+}
+
+.headline {
+  font-size: clamp(2.25rem, 5vw + 1rem, 4.25rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-block-end: var(--space-xl);
+}
+
+.line {
+  display: block;
+  color: var(--text);
+}
+
+.lineMuted {
+  display: block;
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate .headlineLine {
+    opacity: 0;
+    animation: hero-line 0.85s var(--ease-out-expo) forwards;
+  }
+
+  .animate .headlineLine:nth-of-type(1) {
+    animation-delay: 0.08s;
+  }
+
+  .animate .headlineLine:nth-of-type(2) {
+    animation-delay: 0.2s;
+  }
+
+  .animate .lede {
+    opacity: 0;
+    animation: fade-up 0.8s var(--ease-out-expo) 0.32s forwards;
+  }
+
+  .animate .actions {
+    opacity: 0;
+    animation: fade-up 0.8s var(--ease-out-expo) 0.48s forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate .headlineLine,
+  .animate .lede,
+  .animate .actions {
+    opacity: 1;
+  }
+}
+
+.lede {
+  font-size: clamp(1.05rem, 1vw + 0.9rem, 1.25rem);
+  color: var(--text-muted);
+  max-inline-size: 36rem;
+  margin-block-end: var(--space-2xl);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.primary {
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--bg-deep);
+  background: var(--text);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    transform 0.25s var(--ease-out-expo),
+    background-color 0.25s var(--ease-out-expo);
+}
+
+.primary:hover {
+  background: color-mix(in srgb, var(--text) 92%, var(--accent));
+  transform: translateY(-1px);
+}
+
+.primary:active {
+  transform: translateY(0);
+}
+
+.secondary {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  transition: color 0.25s var(--ease-out-expo);
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  color: var(--text);
+}
