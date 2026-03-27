@@ -1,0 +1,58 @@
+.root {
+  position: fixed;
+  z-index: 160;
+  max-width: min(32rem, calc(100vw - 1.5rem));
+  max-height: min(45vh, 22rem);
+  padding: 0.65rem 0.75rem;
+  pointer-events: none;
+  animation: hoverTipIn 0.22s var(--ease-out-expo) both;
+}
+
+@keyframes hoverTipIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.label {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-block-end: 0.35rem;
+}
+
+.pre {
+  margin: 0;
+  max-height: min(38vh, 18rem);
+  overflow: auto;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+  font-size: 0.65rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--text) 88%, var(--accent));
+  white-space: pre-wrap;
+  word-break: break-word;
+  scrollbar-width: thin;
+}
+
+.pre::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.pre::-webkit-scrollbar-thumb {
+  background: var(--glass-stroke);
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    animation: none;
+  }
+}
