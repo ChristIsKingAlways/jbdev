@@ -44,11 +44,11 @@ const ProjectCard = memo(function ProjectCard({ project }) {
           alt={`Preview of ${project.title}`}
           className={styles.image}
           fill
-          sizes="(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw"
+          sizes="(max-width: 23.99rem) 34vw, (max-width: 47.99rem) 22vw, (max-width: 63.99rem) 16vw, 12vw"
         />
       </div>
       <div className={styles.meta}>
-        <div>
+        <div className={styles.text}>
           <h3 className={styles.cardTitle}>{project.title}</h3>
           <p className={styles.category}>{project.category}</p>
         </div>
