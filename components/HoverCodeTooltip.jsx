@@ -3,7 +3,7 @@
 /**
  * After HOVER_MS on one element, shows truncated outerHTML in a glass tooltip.
  * Opt out: data-no-markup-inspector on an element. Root carries data-markup-inspector.
- * BEM block: hover-code-tooltip (see HoverCodeTooltip.module.css).
+ * Styles: HoverCodeTooltip.module.css (scoped names + global `glass`).
  */
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
@@ -147,12 +147,12 @@ export default function HoverCodeTooltip() {
     <div
       ref={rootRef}
       {...{ [ATTR_ROOT]: '' }}
-      className={`glass ${styles['hover-code-tooltip']}`}
+      className={`glass ${styles.panel}`}
       style={{ left: pos.x, top: pos.y }}
       aria-hidden="true"
     >
-      <div className={styles['hover-code-tooltip__label']}>Markup</div>
-      <pre className={styles['hover-code-tooltip__code']}>
+      <div className={styles.label}>Markup</div>
+      <pre className={styles.code}>
         <code>{panel}</code>
       </pre>
     </div>

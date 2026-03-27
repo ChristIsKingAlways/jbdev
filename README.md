@@ -1,8 +1,8 @@
 # Portfolio Website
 
-A one-page portfolio built with **semantic HTML**, **modern CSS** (layers, custom properties, `color-mix`, logical properties), **JavaScript**, and **React** (Next.js App Router). Styling uses **CSS Modules** with **BEM-style** class names and shared **glass** utilities—no Tailwind or animation libraries.
+A one-page portfolio built with **semantic HTML**, **modern CSS** (layers, custom properties, `color-mix`, logical properties), **JavaScript**, and **React** (Next.js App Router). Styling uses **CSS Modules** (scoped camelCase) plus global **glass** utilities—no Tailwind or animation libraries.
 
-**Maintainer notes:** see [`docs/DEVELOPER-NOTES.md`](docs/DEVELOPER-NOTES.md) for BEM vocabulary, file map, and feature documentation.
+**Maintainer notes:** see [`docs/DEVELOPER-NOTES.md`](docs/DEVELOPER-NOTES.md) for naming, file map, and feature documentation.
 
 ## Highlights
 

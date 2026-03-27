@@ -1,18 +1,16 @@
-/**
- * Block: hover-code-tooltip — fixed panel; pairs with global .glass.
- */
+/* Scoped to HoverCodeTooltip.jsx; pairs with global .glass */
 
-.hover-code-tooltip {
+.panel {
   position: fixed;
   z-index: 160;
   max-width: min(32rem, calc(100vw - 1.5rem));
   max-height: min(45vh, 22rem);
   padding: 0.65rem 0.75rem;
   pointer-events: none;
-  animation: hover-code-tooltip-enter 0.22s var(--ease-out-expo) both;
+  animation: tooltipEnter 0.22s var(--ease-out-expo) both;
 }
 
-@keyframes hover-code-tooltip-enter {
+@keyframes tooltipEnter {
   from {
     opacity: 0;
     transform: translateY(6px) scale(0.98);
@@ -23,7 +21,7 @@
   }
 }
 
-.hover-code-tooltip__label {
+.label {
   font-size: 0.5625rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -32,7 +30,7 @@
   margin-block-end: 0.35rem;
 }
 
-.hover-code-tooltip__code {
+.code {
   margin: 0;
   max-height: min(38vh, 18rem);
   overflow: auto;
@@ -45,18 +43,18 @@
   scrollbar-width: thin;
 }
 
-.hover-code-tooltip__code::-webkit-scrollbar {
+.code::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-.hover-code-tooltip__code::-webkit-scrollbar-thumb {
+.code::-webkit-scrollbar-thumb {
   background: var(--glass-stroke);
   border-radius: 999px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hover-code-tooltip {
+  .panel {
     animation: none;
   }
 }

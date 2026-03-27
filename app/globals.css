@@ -1,12 +1,9 @@
 /**
  * Global styles — design tokens, reset, and shared utilities.
  *
- * BEM (global utilities):
- * - Block: .glass — frosted panel material
- * - Modifiers: .glass--hero | .glass--about | .glass--form | .glass--footer
- * - Block: .site-skip-link — accessibility skip control (see SkipLink.jsx)
- *
- * Component-scoped BEM lives in *.module.css next to each component.
+ * Glass: base `.glass` plus context classes `.glassHero`, `.glassAbout`,
+ * `.glassForm`, `.glassFooter` (used alongside component CSS modules).
+ * Skip link: `.site-skip-link` (see SkipLink.jsx).
  */
 @layer reset, tokens, base, components, utilities;
 
@@ -177,7 +174,7 @@
     border: 0;
   }
 
-  /* Block: glass — shared frosted material; modifiers tune padding and context */
+  /* Shared frosted material; pair with glassHero / glassAbout / etc. */
   .glass {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur) var(--glass-saturate);
@@ -187,18 +184,18 @@
     border-radius: 1.25rem;
   }
 
-  .glass--hero {
+  .glassHero {
     padding: clamp(1.35rem, 3.5vw, 2.35rem);
     border-radius: 1.5rem;
     max-inline-size: 48rem;
   }
 
-  .glass--about {
+  .glassAbout {
     padding: clamp(1.25rem, 3vw, 1.85rem);
     border-radius: 1.25rem;
   }
 
-  .glass--form {
+  .glassForm {
     padding: var(--space-xl);
     border-radius: 1.25rem;
     background: var(--glass-bg-elevated);
@@ -206,7 +203,7 @@
     -webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate);
   }
 
-  .glass--footer {
+  .glassFooter {
     padding: var(--space-md) var(--space-lg);
     border-radius: var(--radius-full);
     background: var(--glass-bg-subtle);
@@ -219,13 +216,13 @@
 
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .glass,
-  .glass--form {
+  .glassForm {
     background: color-mix(in srgb, var(--bg-deep) 92%, white);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
 
-  .glass--footer {
+  .glassFooter {
     background: color-mix(in srgb, var(--bg-deep) 90%, white);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -234,34 +231,12 @@
 
 @media (prefers-reduced-transparency: reduce) {
   .glass,
-  .glass--form,
-  .glass--hero,
-  .glass--about,
-  .glass--footer {
+  .glassForm,
+  .glassHero,
+  .glassAbout,
+  .glassFooter {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: color-mix(in srgb, var(--bg-deep) 90%, white);
-  }
-}
-
-@keyframes hero-line {
-  from {
-    opacity: 0;
-    transform: translateY(1.25rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

@@ -1,9 +1,6 @@
-/**
- * Block: navigation — fixed site header with glass material.
- * Modifiers: --scrolled (compact, stronger blur), --expanded (top of page).
- */
+/* Scoped to Navigation.jsx — short names; file provides the namespace. */
 
-.navigation {
+.bar {
   position: fixed;
   inset-block-start: 0;
   inset-inline: 0;
@@ -17,7 +14,7 @@
     box-shadow var(--duration) var(--ease-out-expo);
 }
 
-.navigation--scrolled {
+.barScrolled {
   padding-block: var(--space-md);
   background: var(--glass-bg-elevated);
   backdrop-filter: var(--glass-blur-nav) var(--glass-saturate);
@@ -26,7 +23,7 @@
   border-block-end-color: var(--glass-stroke-bright);
 }
 
-.navigation--expanded {
+.barExpanded {
   padding-block: var(--space-lg);
   background: var(--glass-bg-subtle);
   backdrop-filter: var(--glass-blur-tight) var(--glass-saturate);
@@ -34,7 +31,7 @@
   box-shadow: var(--glass-inset);
 }
 
-.navigation__inner {
+.inner {
   width: var(--container);
   margin-inline: auto;
   display: flex;
@@ -43,18 +40,18 @@
   min-block-size: 2.75rem;
 }
 
-.navigation__brand {
+.brand {
   font-size: 1.125rem;
   font-weight: 500;
   color: var(--text);
   text-decoration: none;
 }
 
-.navigation__brand:hover {
+.brand:hover {
   color: color-mix(in srgb, var(--text) 85%, var(--accent));
 }
 
-.navigation__list {
+.list {
   list-style: none;
   padding: 0;
   display: none;
@@ -63,24 +60,24 @@
 }
 
 @media (min-width: 48rem) {
-  .navigation__list {
+  .list {
     display: flex;
   }
 }
 
-.navigation__link {
+.link {
   font-size: 0.875rem;
   color: var(--text-muted);
   text-decoration: none;
   position: relative;
 }
 
-.navigation__link:hover,
-.navigation__link:focus-visible {
+.link:hover,
+.link:focus-visible {
   color: var(--text);
 }
 
-.navigation__link::after {
+.link::after {
   content: '';
   position: absolute;
   inset-inline: 0;
@@ -92,13 +89,13 @@
   transition: transform 0.35s var(--ease-out-expo);
 }
 
-.navigation__link:hover::after,
-.navigation__link:focus-visible::after {
+.link:hover::after,
+.link:focus-visible::after {
   transform: scaleX(1);
   transform-origin: inline-start;
 }
 
-.navigation__cta-mobile {
+.mobileCta {
   display: inline-flex;
   border: none;
   background: none;
@@ -111,20 +108,20 @@
   position: relative;
 }
 
-.navigation__cta-mobile:hover,
-.navigation__cta-mobile:focus-visible {
+.mobileCta:hover,
+.mobileCta:focus-visible {
   color: var(--text);
 }
 
 @media (min-width: 48rem) {
-  .navigation__cta-mobile {
+  .mobileCta {
     display: none;
   }
 }
 
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .navigation--expanded,
-  .navigation--scrolled {
+  .barExpanded,
+  .barScrolled {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: color-mix(in srgb, var(--bg-deep) 94%, white);
@@ -132,8 +129,8 @@
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .navigation--expanded,
-  .navigation--scrolled {
+  .barExpanded,
+  .barScrolled {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: color-mix(in srgb, var(--bg-deep) 92%, white);

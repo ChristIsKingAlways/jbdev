@@ -1,8 +1,7 @@
 'use client'
 
 /**
- * Site navigation: fixed bar, in-page anchor scroll, glass states.
- * BEM block: navigation (see Navigation.module.css).
+ * Fixed nav + in-page scroll. Styles: Navigation.module.css (scoped names).
  */
 
 import { useEffect, useState } from 'react'
@@ -19,8 +18,7 @@ function scrollToSelector(selector) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     return
   }
-  const el = document.querySelector(selector)
-  el?.scrollIntoView({ behavior: 'smooth' })
+  document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' })
 }
 
 export default function Navigation() {
@@ -34,13 +32,11 @@ export default function Navigation() {
   }, [])
 
   return (
-    <header
-      className={`${styles.navigation} ${scrolled ? styles['navigation--scrolled'] : styles['navigation--expanded']}`}
-    >
-      <nav className={styles.navigation__inner} aria-label="Primary">
+    <header className={`${styles.bar} ${scrolled ? styles.barScrolled : styles.barExpanded}`}>
+      <nav className={styles.inner} aria-label="Primary">
         <a
           href="#home"
-          className={styles.navigation__brand}
+          className={styles.brand}
           onClick={(e) => {
             e.preventDefault()
             scrollToSelector('#home')
@@ -49,12 +45,12 @@ export default function Navigation() {
           Jordan Benson
         </a>
 
-        <ul className={styles.navigation__list}>
+        <ul className={styles.list}>
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className={styles.navigation__link}
+                className={styles.link}
                 onClick={(e) => {
                   e.preventDefault()
                   scrollToSelector(link.href)
@@ -66,11 +62,7 @@ export default function Navigation() {
           ))}
         </ul>
 
-        <button
-          type="button"
-          className={styles['navigation__cta-mobile']}
-          onClick={() => scrollToSelector('#contact')}
-        >
+        <button type="button" className={styles.mobileCta} onClick={() => scrollToSelector('#contact')}>
           Contact
         </button>
       </nav>

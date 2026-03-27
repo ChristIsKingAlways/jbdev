@@ -1,22 +1,20 @@
-/**
- * Block: contact — mail link, validated form, glass form panel.
- */
+/* Scoped to Contact.jsx */
 
-.contact {
+.section {
   padding-block: var(--space-section);
   border-block-start: 1px solid var(--border-subtle);
 }
 
-.contact__inner {
+.inner {
   width: var(--container);
   margin-inline: auto;
 }
 
-.contact__copy {
+.copy {
   max-inline-size: 42rem;
 }
 
-.contact__eyebrow {
+.eyebrow {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -24,21 +22,21 @@
   margin-block-end: var(--space-md);
 }
 
-.contact__title {
+.title {
   font-size: clamp(1.75rem, 2vw + 1rem, 2.25rem);
   font-weight: 500;
   margin-block-end: var(--space-md);
   letter-spacing: -0.02em;
 }
 
-.contact__sub {
+.sub {
   font-size: 1.125rem;
   color: var(--text-muted);
   margin-block-end: var(--space-2xl);
   line-height: 1.6;
 }
 
-.contact__mail {
+.mail {
   display: inline-block;
   font-size: clamp(1.35rem, 2vw + 1rem, 1.85rem);
   font-weight: 500;
@@ -48,7 +46,7 @@
   position: relative;
 }
 
-.contact__mail::after {
+.mail::after {
   content: '';
   position: absolute;
   inset-inline: 0;
@@ -60,25 +58,25 @@
   transition: transform 0.4s var(--ease-out-expo);
 }
 
-.contact__mail:hover::after,
-.contact__mail:focus-visible::after {
+.mail:hover::after,
+.mail:focus-visible::after {
   transform: scaleX(1);
   transform-origin: inline-start;
 }
 
-.contact__form {
+.form {
   display: grid;
   gap: var(--space-lg);
   margin-block-start: var(--space-xl);
 }
 
-.contact__field {
+.field {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
 }
 
-.contact__label {
+.label {
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -86,8 +84,8 @@
   color: var(--text-muted);
 }
 
-.contact__input,
-.contact__textarea {
+.input,
+.textarea {
   width: 100%;
   padding: 0.85rem 1rem;
   border-radius: var(--radius-sm);
@@ -101,29 +99,29 @@
     box-shadow 0.2s ease;
 }
 
-.contact__input:focus-visible,
-.contact__textarea:focus-visible {
+.input:focus-visible,
+.textarea:focus-visible {
   outline: none;
   border-color: color-mix(in srgb, var(--accent) 55%, var(--border-subtle));
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
-.contact__textarea {
+.textarea {
   min-block-size: 8rem;
   resize: vertical;
 }
 
-.contact__hint {
+.hint {
   font-size: 0.8125rem;
   color: var(--text-faint);
 }
 
-.contact__error {
+.error {
   color: color-mix(in srgb, #f87171 85%, var(--text));
   font-size: 0.875rem;
 }
 
-.contact__submit {
+.submit {
   justify-self: start;
   padding: 0.9rem 1.75rem;
   font-size: 0.875rem;
@@ -139,35 +137,35 @@
     filter 0.25s ease;
 }
 
-.contact__submit:hover:not(:disabled) {
+.submit:hover:not(:disabled) {
   transform: translateY(-1px);
   filter: brightness(1.05);
 }
 
-.contact__submit:disabled {
+.submit:disabled {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-.contact__status {
+.status {
   font-size: 0.9375rem;
   padding: var(--space-md);
   border-radius: var(--radius-sm);
 }
 
-.contact__status--success {
+.statusOk {
   background: color-mix(in srgb, #22c55e 18%, transparent);
   color: color-mix(in srgb, #86efac 90%, var(--text));
   border: 1px solid color-mix(in srgb, #22c55e 35%, transparent);
 }
 
-.contact__status--error {
+.statusErr {
   background: color-mix(in srgb, #ef4444 14%, transparent);
   color: color-mix(in srgb, #fca5a5 92%, var(--text));
   border: 1px solid color-mix(in srgb, #ef4444 30%, transparent);
 }
 
-.contact__reveal {
+.reveal {
   opacity: 0;
   transform: translateY(1rem);
   transition:
@@ -175,14 +173,14 @@
     transform 0.75s var(--ease-out-expo);
 }
 
-.contact__reveal--visible {
+.revealVisible {
   opacity: 1;
   transform: translateY(0);
 }
 
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .contact__input,
-  .contact__textarea {
+  .input,
+  .textarea {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: color-mix(in srgb, var(--bg-deep) 92%, white);
@@ -190,8 +188,8 @@
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .contact__input,
-  .contact__textarea {
+  .input,
+  .textarea {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: color-mix(in srgb, var(--bg-deep) 90%, white);
@@ -199,7 +197,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact__reveal {
+  .reveal {
     opacity: 1;
     transform: none;
     transition: none;

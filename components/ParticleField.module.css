@@ -1,8 +1,6 @@
-/**
- * Block: particle-field — full-screen canvas layer behind content.
- */
+/* Scoped to ParticleField.jsx */
 
-.particle-field__canvas {
+.canvas {
   position: fixed;
   inset: 0;
   z-index: 0;

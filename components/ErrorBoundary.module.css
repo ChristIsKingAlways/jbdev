@@ -1,25 +1,23 @@
-/**
- * Block: error-boundary — fallback UI when a child tree throws.
- */
+/* Scoped to ErrorBoundary.jsx */
 
-.error-boundary {
+.root {
   padding: 4rem 1.5rem;
   max-width: 36rem;
   margin: 0 auto;
   text-align: center;
 }
 
-.error-boundary__title {
+.title {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
 }
 
-.error-boundary__message {
+.message {
   color: color-mix(in srgb, var(--text) 60%, transparent);
   margin-bottom: 1.5rem;
 }
 
-.error-boundary__reload {
+.reload {
   padding: 0.65rem 1.25rem;
   border-radius: var(--radius-full);
   border: none;
@@ -29,6 +27,6 @@
   font-weight: 600;
 }
 
-.error-boundary__reload:hover {
+.reload:hover {
   filter: brightness(1.06);
 }

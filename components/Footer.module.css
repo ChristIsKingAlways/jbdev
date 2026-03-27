@@ -1,15 +1,13 @@
-/**
- * Block: footer — copyright and social links in a glass pill.
- */
+/* Scoped to Footer.jsx */
 
-.footer {
+.root {
   padding-block: var(--space-2xl);
   display: flex;
   justify-content: center;
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
-.footer__inner {
+.inner {
   width: fit-content;
   max-width: min(var(--container), 100%);
   margin-inline: auto;
@@ -21,30 +19,30 @@
 }
 
 @media (min-width: 48rem) {
-  .footer__inner {
+  .inner {
     flex-direction: row;
   }
 }
 
-.footer__copy {
+.copy {
   font-size: 0.875rem;
   color: var(--text-faint);
 }
 
-.footer__nav {
+.nav {
   display: flex;
   align-items: center;
   gap: var(--space-lg);
 }
 
-.footer__link {
+.link {
   font-size: 0.875rem;
   color: var(--text-faint);
   text-decoration: none;
   transition: color 0.25s var(--ease-out-expo);
 }
 
-.footer__link:hover,
-.footer__link:focus-visible {
+.link:hover,
+.link:focus-visible {
   color: var(--text-muted);
 }

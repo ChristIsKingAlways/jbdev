@@ -1,10 +1,5 @@
 'use client'
 
-/**
- * Animated gold particle network; static frame when prefers-reduced-motion.
- * BEM block: particle-field (see ParticleField.module.css).
- */
-
 import { useEffect, useRef } from 'react'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import styles from './ParticleField.module.css'
@@ -116,7 +111,5 @@ export default function ParticleField() {
     }
   }, [reducedMotion])
 
-  return (
-    <canvas ref={canvasRef} className={styles['particle-field__canvas']} aria-hidden />
-  )
+  return <canvas ref={canvasRef} className={styles.canvas} aria-hidden />
 }

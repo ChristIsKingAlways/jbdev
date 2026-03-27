@@ -4,28 +4,23 @@ This document describes how the portfolio is structured, how CSS is named, and w
 
 ---
 
-## Naming: BEM and plain language
+## Naming: CSS Modules + globals
 
-The site uses **BEM-style** class names so markup stays predictable and easy to extend.
+**Component styles** live in `*.module.css` next to each component. Class names are short **camelCase** strings scoped by the build (no repeated file prefix). In JSX use dot notation: `styles.section`, `styles.mobileCta`.
 
-- **Block**: standalone component or pattern (e.g. `hero`, `navigation`, `glass`).
-- **Element**: part of a block, written `block__element` (e.g. `hero__lede`, `navigation__link`).
-- **Modifier**: variant or state, written `block--modifier` or `block__element--modifier` (e.g. `navigation--scrolled`, `contact__status--success`).
+**Global utilities** in `app/globals.css` use kebab-case where conventional (e.g. `site-skip-link`, `visually-hidden`). Frosted panels combine a base class with a context class:
 
-**Words** are common English (navigation, hero, footer, contact, glass) rather than abbreviations, so class names read clearly in DevTools and in JSX.
+- `glass` — shared blur, border, shadow
+- `glassHero`, `glassAbout`, `glassForm`, `glassFooter` — padding and tone per section
 
-### Where BEM lives
+### Where styles live
 
 | Area | Location |
 |------|-----------|
-| Page sections | `components/*.module.css` — one primary **block** per file (sometimes two related blocks, e.g. `projects` + `project-card`) |
-| Shared frosted panels | `app/globals.css` — **block** `glass` with modifiers `glass--hero`, `glass--about`, `glass--form`, `glass--footer` |
-| Skip link | `app/globals.css` — **block** `site-skip-link` |
-| Screen-reader utility | `app/globals.css` — **utility** `visually-hidden` (common pattern; not tied to one block) |
-
-### CSS Modules
-
-Scoped classes are authored with BEM strings (including hyphens). In JSX, **any class name that contains a hyphen must use bracket notation**—for example `styles['navigation--scrolled']`, `styles['project-card__thumb']`, `styles['navigation__cta-mobile']`. Using dot notation like `styles.navigation__cta-mobile` is parsed as subtraction and will throw at runtime.
+| Section / widget layout | `components/*.module.css` — camelCase, one file per component |
+| Shared glass material | `app/globals.css` — `glass` + `glassHero` / `glassAbout` / `glassForm` / `glassFooter` |
+| Skip link | `app/globals.css` — `site-skip-link` |
+| Screen-reader utility | `app/globals.css` — `visually-hidden` |
 
 ---
 
@@ -37,7 +32,7 @@ Scoped classes are authored with BEM strings (including hyphens). In JSX, **any 
 |------|------|
 | `app/layout.jsx` | HTML shell, Inter font, imports `globals.css`, SEO metadata |
 | `app/page.jsx` | Composes all sections and global widgets (progress bar, particle canvas, markup inspector) |
-| `app/globals.css` | Reset, design tokens (`:root`), body background, glass utilities, keyframes |
+| `app/globals.css` | Reset, design tokens (`:root`), body background, glass utilities |
 
 ### API
 
@@ -55,19 +50,19 @@ Scoped classes are authored with BEM strings (including hyphens). In JSX, **any 
 
 ### Components (`components/`)
 
-| Component | BEM block(s) | Notes |
-|-----------|----------------|-------|
-| `SkipLink` | `site-skip-link` (global) | First tab stop → `#main-content`; `data-no-markup-inspector` so the hover inspector ignores it |
-| `Navigation` | `navigation` | Fixed bar; modifiers `--scrolled` / `--expanded` for glass intensity |
-| `Hero` | `hero` | Full-height intro; copy wrapped in `glass glass--hero` |
-| `Projects` | `projects`, `project-card` | Pinterest-style dense grid; `next/image` for screenshots |
-| `About` | `about` | Two columns; bio panel `glass glass--about`; skill chips with local glass styling |
-| `Contact` | `contact` | Mailto + form; form `glass glass--form`; client + server validation |
-| `Footer` | `footer` | Centered pill row `glass glass--footer` |
-| `ScrollProgress` | `scroll-progress__bar` | Gradient bar scaled on scroll |
-| `ParticleField` | `particle-field__canvas` | Canvas animation; static dots when reduced motion |
-| `HoverCodeTooltip` | `hover-code-tooltip` | After 1.5s hover, shows truncated `outerHTML`; `data-markup-inspector` on root |
-| `ErrorBoundary` | `error-boundary` | Catches render errors inside `<main>` |
+| Component | Notes |
+|-----------|--------|
+| `SkipLink` | Global `site-skip-link`; first tab stop → `#main-content`; `data-no-markup-inspector` |
+| `Navigation` | Fixed bar; `barScrolled` / `barExpanded` for glass intensity |
+| `Hero` | Full-height intro; copy `glass glassHero` |
+| `Projects` | Pinterest-style dense grid; `next/image` for screenshots |
+| `About` | Two columns; bio `glass glassAbout`; skill chips with local glass styling |
+| `Contact` | Mailto + form; form `glass glassForm`; client + server validation |
+| `Footer` | Centered pill row `glass glassFooter` |
+| `ScrollProgress` | Gradient `bar` scaled on scroll |
+| `ParticleField` | Canvas animation; static dots when reduced motion |
+| `HoverCodeTooltip` | After 1.5s hover, shows truncated `outerHTML`; `data-markup-inspector` on root |
+| `ErrorBoundary` | Catches render errors inside `<main>` |
 
 ---
 

@@ -1,8 +1,7 @@
 'use client'
 
 /**
- * About section: story copy and skill tags; bio uses global .glass--about.
- * BEM block: about (see About.module.css).
+ * About + skills. Bio panel: `glass glassAbout`.
  */
 
 import { useInView } from '@/hooks/useInView'
@@ -23,23 +22,16 @@ export default function About() {
   const [ref, visible] = useInView({ threshold: 0.1, once: true })
 
   return (
-    <section
-      id="about"
-      className={styles.about}
-      aria-labelledby="about-heading"
-      ref={ref}
-    >
-      <div
-        className={`${styles.about__inner} ${visible ? styles['about__inner--visible'] : ''}`}
-      >
-        <div className={styles.about__intro}>
-          <p className={styles.about__eyebrow}>About</p>
-          <h2 id="about-heading" className={styles.about__lead}>
+    <section id="about" className={styles.section} aria-labelledby="about-heading" ref={ref}>
+      <div className={`${styles.inner} ${visible ? styles.innerVisible : ''}`}>
+        <div className={styles.intro}>
+          <p className={styles.eyebrow}>About</p>
+          <h2 id="about-heading" className={styles.lead}>
             Builder. Problem solver. Always learning.
           </h2>
         </div>
 
-        <div className={`${styles.about__body} glass glass--about`}>
+        <div className={`${styles.body} glass glassAbout`}>
           <p>
             I&apos;m a builder at heart with a background in IT support and a growing focus on full-stack
             development. After 17 years of solving real-world technical problems, I&apos;ve shifted toward
@@ -65,13 +57,13 @@ export default function About() {
             better user experiences, smarter systems, or tools that solve real problems.
           </p>
 
-          <p className={styles['about__text--emphasis']}>
+          <p className={styles.emphasis}>
             I&apos;m not just learning to code. I&apos;m building, testing, and improving every day.
           </p>
 
-          <ul className={styles.about__skills} aria-label="Focus areas">
+          <ul className={styles.skills} aria-label="Focus areas">
             {SKILLS.map((skill) => (
-              <li key={skill} className={styles['about__skill-tag']}>
+              <li key={skill} className={styles.skillTag}>
                 {skill}
               </li>
             ))}

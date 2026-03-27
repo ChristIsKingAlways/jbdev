@@ -1,8 +1,7 @@
 'use client'
 
 /**
- * Class error boundary around main content; renders BEM-styled fallback on error.
- * See ErrorBoundary.module.css.
+ * Class error boundary around main content; fallback UI in ErrorBoundary.module.css.
  */
 
 import { Component } from 'react'
@@ -21,14 +20,14 @@ export class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <section className={styles['error-boundary']} role="alert">
-          <h1 className={styles['error-boundary__title']}>Something went wrong</h1>
-          <p className={styles['error-boundary__message']}>
+        <section className={styles.root} role="alert">
+          <h1 className={styles.title}>Something went wrong</h1>
+          <p className={styles.message}>
             Please refresh the page. If the problem persists, try again later.
           </p>
           <button
             type="button"
-            className={styles['error-boundary__reload']}
+            className={styles.reload}
             onClick={() => window.location.reload()}
           >
             Reload

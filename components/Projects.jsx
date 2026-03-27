@@ -1,8 +1,7 @@
 'use client'
 
 /**
- * Portfolio grid: Microlink screenshots, dense responsive columns.
- * BEM: projects (section), project-card (tile). See Projects.module.css.
+ * Portfolio tiles (Microlink + next/image). Styles: Projects.module.css.
  */
 
 import { memo } from 'react'
@@ -37,27 +36,22 @@ const PROJECTS = [
 
 const ProjectCard = memo(function ProjectCard({ project }) {
   return (
-    <a
-      href={project.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={styles['project-card']}
-    >
-      <div className={styles['project-card__thumb']}>
+    <a href={project.link} target="_blank" rel="noopener noreferrer" className={styles.card}>
+      <div className={styles.thumb}>
         <Image
           src={project.image}
           alt={`Preview of ${project.title}`}
-          className={styles['project-card__image']}
+          className={styles.image}
           fill
           sizes="(max-width: 23.99rem) 34vw, (max-width: 47.99rem) 22vw, (max-width: 63.99rem) 16vw, 12vw"
         />
       </div>
-      <div className={styles['project-card__meta']}>
-        <div className={styles['project-card__text']}>
-          <h3 className={styles['project-card__title']}>{project.title}</h3>
-          <p className={styles['project-card__category']}>{project.category}</p>
+      <div className={styles.meta}>
+        <div className={styles.text}>
+          <h3 className={styles.cardTitle}>{project.title}</h3>
+          <p className={styles.category}>{project.category}</p>
         </div>
-        <span className={styles['project-card__arrow']} aria-hidden>
+        <span className={styles.arrow} aria-hidden>
           →
         </span>
       </div>
@@ -69,23 +63,16 @@ export default function Projects() {
   const [ref, visible] = useInView({ threshold: 0.08, once: true })
 
   return (
-    <section
-      id="projects"
-      className={styles.projects}
-      aria-labelledby="projects-heading"
-      ref={ref}
-    >
-      <div className={styles.projects__inner}>
-        <header className={styles.projects__header}>
-          <p className={styles.projects__eyebrow}>Selected Work</p>
-          <h2 id="projects-heading" className={styles.projects__title}>
+    <section id="projects" className={styles.section} aria-labelledby="projects-heading" ref={ref}>
+      <div className={styles.inner}>
+        <header className={styles.header}>
+          <p className={styles.eyebrow}>Selected Work</p>
+          <h2 id="projects-heading" className={styles.title}>
             Recent projects
           </h2>
         </header>
 
-        <div
-          className={`${styles.projects__grid} ${visible ? styles['projects__grid--visible'] : ''}`}
-        >
+        <div className={`${styles.grid} ${visible ? styles.gridVisible : ''}`}>
           {PROJECTS.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
