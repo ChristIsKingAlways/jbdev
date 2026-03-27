@@ -6,7 +6,6 @@ import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import ScrollProgress from '@/components/ScrollProgress'
-import CursorGlow from '@/components/CursorGlow'
 import ParticleField from '@/components/ParticleField'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 
@@ -16,7 +15,6 @@ export default function Home() {
       <SkipLink />
       <ScrollProgress />
       <ParticleField />
-      <CursorGlow />
       <Navigation />
       <ErrorBoundary>
         <main id="main-content">
