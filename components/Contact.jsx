@@ -80,7 +80,7 @@ export default function Contact() {
           <div className={`${styles.reveal} ${visible ? styles.revealVisible : ''}`}>
             <form
               id={formId}
-              className={styles.form}
+              className={`${styles.form} glass-surface glass-surface--form`}
               onSubmit={handleSubmit}
               noValidate
               aria-describedby={status ? `${formId}-status` : undefined}

@@ -7,7 +7,7 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.inner}>
+      <div className={`${styles.inner} glass-surface glass-surface--footer`}>
         <p className={styles.copy}>© {year} Jordan Benson</p>
         <nav className={styles.links} aria-label="Social">
           <a

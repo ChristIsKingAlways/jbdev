@@ -32,7 +32,7 @@ export default function About() {
           </h2>
         </div>
 
-        <div className={styles.body}>
+        <div className={`${styles.body} glass-surface glass-surface--about`}>
           <p>
             I&apos;m a builder at heart with a background in IT support and a growing focus on full-stack
             development. After 17 years of solving real-world technical problems, I&apos;ve shifted toward

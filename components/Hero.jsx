@@ -18,7 +18,7 @@ export default function Hero() {
       aria-labelledby="hero-heading"
     >
       <div className={styles.inner}>
-        <div className={styles.copy}>
+        <div className={`${styles.copy} glass-surface glass-surface--hero`}>
           <h1 id="hero-heading" className={`${styles.headline} ${visible ? styles.animate : ''}`}>
             <span className={`${styles.line} ${styles.headlineLine}`}>Crafting digital</span>
             <span className={`${styles.lineMuted} ${styles.headlineLine}`}>experiences that matter</span>

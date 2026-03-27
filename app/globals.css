@@ -82,6 +82,20 @@
     --header-height: 4.5rem;
     --container: min(72rem, 100% - clamp(1.5rem, 5vw, 3rem));
     --scroll-pad-top: var(--header-height);
+
+    /* Apple-style vibrancy / materials (dark) */
+    --glass-bg: color-mix(in srgb, var(--bg-deep) 42%, transparent);
+    --glass-bg-elevated: color-mix(in srgb, var(--bg-deep) 58%, transparent);
+    --glass-bg-subtle: color-mix(in srgb, var(--bg-deep) 30%, transparent);
+    --glass-stroke: color-mix(in srgb, white 10%, transparent);
+    --glass-stroke-bright: color-mix(in srgb, white 16%, transparent);
+    --glass-blur: blur(32px);
+    --glass-blur-nav: blur(40px);
+    --glass-blur-tight: blur(20px);
+    --glass-saturate: saturate(180%);
+    --glass-shadow: 0 16px 48px color-mix(in srgb, black 48%, transparent);
+    --glass-shadow-soft: 0 8px 28px color-mix(in srgb, black 38%, transparent);
+    --glass-inset: inset 0 1px 0 var(--glass-stroke-bright);
   }
 }
 
@@ -150,6 +164,75 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+  }
+
+  /**
+   * Frosted “liquid glass” panels (backdrop blur + saturation + hairline border).
+   * Modifiers only adjust padding/radius; core material stays consistent.
+   */
+  .glass-surface {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur) var(--glass-saturate);
+    -webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate);
+    border: 1px solid var(--glass-stroke);
+    box-shadow: var(--glass-inset), var(--glass-shadow);
+    border-radius: 1.25rem;
+  }
+
+  .glass-surface--hero {
+    padding: clamp(1.35rem, 3.5vw, 2.35rem);
+    border-radius: 1.5rem;
+    max-inline-size: 48rem;
+  }
+
+  .glass-surface--about {
+    padding: clamp(1.25rem, 3vw, 1.85rem);
+    border-radius: 1.25rem;
+  }
+
+  .glass-surface--form {
+    padding: var(--space-xl);
+    border-radius: 1.25rem;
+    background: var(--glass-bg-elevated);
+    backdrop-filter: var(--glass-blur) var(--glass-saturate);
+    -webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate);
+  }
+
+  .glass-surface--footer {
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-full);
+    background: var(--glass-bg-subtle);
+    backdrop-filter: var(--glass-blur-tight) var(--glass-saturate);
+    -webkit-backdrop-filter: var(--glass-blur-tight) var(--glass-saturate);
+    box-shadow: var(--glass-inset), var(--glass-shadow-soft);
+    border: 1px solid var(--glass-stroke);
+  }
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .glass-surface,
+  .glass-surface--form {
+    background: color-mix(in srgb, var(--bg-deep) 92%, white);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .glass-surface--footer {
+    background: color-mix(in srgb, var(--bg-deep) 90%, white);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-surface,
+  .glass-surface--form,
+  .glass-surface--hero,
+  .glass-surface--about,
+  .glass-surface--footer {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: color-mix(in srgb, var(--bg-deep) 90%, white);
   }
 }
 
